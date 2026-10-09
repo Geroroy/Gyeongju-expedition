@@ -1,0 +1,18 @@
+{
+  "name": "gyeongju-expedition",
+  "version": "0.1.0",
+  "private": true,
+  "description": "경주 탐방 오픈월드 — 황리단길에서 출발하는 3D 웹 게임",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "three": "0.169.0"
+  },
+  "devDependencies": {
+    "vite": "5.4.10"
+  }
+}

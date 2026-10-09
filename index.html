@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>경주 탐방</title>
+    <meta name="description" content="황리단길에서 출발하는 경주 오픈월드 탐방 게임" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&family=Noto+Serif+KR:wght@700;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/src/styles.css" />
+  </head>
+  <body>
+    <canvas id="game"></canvas>
+
+    <!-- 타이틀 -->
+    <div id="title" class="overlay">
+      <div class="title-card">
+        <div class="title-kicker">GYEONGJU OPEN WORLD</div>
+        <h1>경주 탐방</h1>
+        <p class="title-sub">빨간 점퍼 고릴라와 함께 걷는 천년 고도</p>
+        <button id="start" disabled>불러오는 중…</button>
+        <ul class="title-keys">
+          <li><b>WASD / 방향키</b> 이동</li>
+          <li><b>Shift</b> 달리기</li>
+          <li><b>Space</b> 점프</li>
+          <li><b>마우스 드래그</b> 시점 · <b>휠</b> 줌</li>
+          <li><b>E</b> 살펴보기 · <b>F</b> 자전거</li>
+          <li><b>M</b> 지도 · <b>N</b> 낮/밤 · <b>H</b> 도움말</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- HUD -->
+    <div id="hud" hidden>
+      <div id="place">
+        <div class="place-name">황리단길</div>
+        <div class="place-sub">경주시 황남동</div>
+      </div>
+      <button id="stampbtn" class="pill" title="스탬프 도감 (B)">📮 스탬프 <span id="stampcount">0/0</span></button>
+      <div id="minimap"><canvas width="200" height="200"></canvas><div class="mm-n">N</div></div>
+      <div id="prompt" hidden></div>
+      <div id="toast"></div>
+      <div id="help" hidden>
+        <b>조작</b><br />
+        WASD/방향키 이동 · Shift 달리기 · Space 점프<br />
+        드래그 시점 · 휠 줌 · E 살펴보기 · F 자전거<br />
+        M 지도(빠른 이동) · B 스탬프 · N 낮/밤 · H 닫기
+      </div>
+      <div id="coords"></div>
+    </div>
+
+    <!-- 정보 패널 -->
+    <div id="info" class="overlay" hidden>
+      <div class="info-card">
+        <button class="close" data-close>×</button>
+        <div class="info-icon"></div>
+        <h2></h2>
+        <div class="info-en"></div>
+        <p class="info-desc"></p>
+        <ul class="info-facts"></ul>
+        <div class="info-stamp">탐방 완료</div>
+      </div>
+    </div>
+
+    <!-- 지도 -->
+    <div id="map" class="overlay" hidden>
+      <div class="map-card">
+        <div class="map-head">
+          <h2>경주 탐방 지도</h2>
+          <span>방문한 곳을 누르면 빠른 이동</span>
+          <button class="close" data-close>×</button>
+        </div>
+        <div class="map-wrap"><canvas></canvas><div class="map-pins"></div></div>
+      </div>
+    </div>
+
+    <!-- 스탬프 도감 -->
+    <div id="stamps" class="overlay" hidden>
+      <div class="stamp-card">
+        <div class="map-head">
+          <h2>경주 스탬프 투어</h2>
+          <span class="stamp-progress"></span>
+          <button class="close" data-close>×</button>
+        </div>
+        <div class="stamp-grid"></div>
+      </div>
+    </div>
+
+    <!-- 모바일 조작 -->
+    <div id="touch">
+      <div class="stick"><div class="knob"></div></div>
+      <div class="tbtns">
+        <button data-key="KeyE">살펴<br />보기</button>
+        <button data-key="KeyF">🚲</button>
+        <button data-key="Space" class="big">점프</button>
+        <button data-key="ShiftLeft">달리기</button>
+      </div>
+      <div class="tbtns-top">
+        <button data-key="KeyM">🗺</button>
+        <button data-key="KeyN">🌙</button>
+      </div>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
